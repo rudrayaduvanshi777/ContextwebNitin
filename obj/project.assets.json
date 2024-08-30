@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\azure\\Repo\\ContEXTWebRepo\\ContEXTWebProd\\NitinWebNewApp.csproj",
+      "projectUniqueName": "D:\\azure\\Repo\\contextwebnitin\\NitinWebNewApp.csproj",
       "projectName": "NitinWebNewApp",
-      "projectPath": "D:\\azure\\Repo\\ContEXTWebRepo\\ContEXTWebProd\\NitinWebNewApp.csproj",
+      "projectPath": "D:\\azure\\Repo\\contextwebnitin\\NitinWebNewApp.csproj",
       "packagesPath": "C:\\Users\\rudra\\.nuget\\packages\\",
-      "outputPath": "D:\\azure\\Repo\\ContEXTWebRepo\\ContEXTWebProd\\obj\\",
+      "outputPath": "D:\\azure\\Repo\\contextwebnitin\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
