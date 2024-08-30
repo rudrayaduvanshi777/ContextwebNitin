@@ -1,39 +1,65 @@
-name: Publish 🚀
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy ASP.Net Core app to Azure Web App - GitHubTestDemo
 
 on:
-  workflow_dispatch:
   push:
     branches:
-    - main
-
-env:
-  AZURE_WEBAPP_NAME: GitHubTestDemo
-  AZURE_WEBAPP_PACKAGE_PATH: "./publish"
+      - main
+  workflow_dispatch:
 
 jobs:
-  publish:
-    runs-on: window-latest
-    
+  build:
+    runs-on: windows-latest
+
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-          
-      - name: Restore
-        run: dotnet restore ./NitinWebNewApp.sln
-        
-      - name: Build
-        run: dotnet build ./NitinWebNewApp.sln --configuration Release --no-restore
-        
-      - name: Publish
-        run: dotnet publish ./NitinWebNewApp.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
-        
-      - name: Deployment
-        uses: azure/webapps-deploy@v2
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+
+      - name: dotnet publish
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/contextwebnitin
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
         with:
-          app-name: GitHubTestDemo
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          name: .net-app
+          path: ${{env.DOTNET_ROOT}}/contextwebnitin
+
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write #This is required for requesting the JWT
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: .net-app
+      
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_686B2A2A5E8B4D4EB7B1FD3E10265D05 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_40434D2A753246348DAAA9C7091E5007 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_511C0F3400AF412FB714060059F253F6 }}
+
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'GitHubTestDemo'
+          slot-name: 'Production'
           package: .
+          
