@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NitinWebNewApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69457643fab7f866779be9a046af584dd153c1c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5601d0a3f85adecf026c2498f9386e42f423b1d6")]
 [assembly: System.Reflection.AssemblyProductAttribute("NitinWebNewApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NitinWebNewApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
