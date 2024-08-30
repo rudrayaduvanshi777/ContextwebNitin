@@ -1,0 +1,7 @@
+D:\azure\Repo\contextwebnitin\bin\Release\net8.0\publish\NitinWebNewApp.exe
+D:\azure\Repo\contextwebnitin\bin\Release\net8.0\publish\appsettings.Development.json
+D:\azure\Repo\contextwebnitin\bin\Release\net8.0\publish\appsettings.json
+D:\azure\Repo\contextwebnitin\bin\Release\net8.0\publish\NitinWebNewApp.dll
+D:\azure\Repo\contextwebnitin\bin\Release\net8.0\publish\NitinWebNewApp.deps.json
+D:\azure\Repo\contextwebnitin\bin\Release\net8.0\publish\NitinWebNewApp.runtimeconfig.json
+D:\azure\Repo\contextwebnitin\bin\Release\net8.0\publish\NitinWebNewApp.pdb
